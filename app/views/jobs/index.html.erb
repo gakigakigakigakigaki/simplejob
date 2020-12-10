@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <title>Simple Job</title>
+    </head>
+    <body>
+      <header>
+        <div class="heading">
+          <h1 class="title">Simple Job</h1>
+        </div>
+        <div class="navbar">
+          <ul class="nav-lists">
+          <% if user_signed_in? %>
+            <li><%= link_to current_user.nickname, "#", class: "user-nickname" %></li>
+            <li><%= link_to 'ログアウト',"#", method: :delete, class:"logout" %></li>
+
+            <% else %>
+
+            <li><%= link_to 'ログイン',new_user_session_path, class: "login" %></li>
+            <li><%= link_to '新規登録', new_user_registration_path, class: "sign-up"%></li>
+          </ul>
+        </div>
+      </header>
+
+    <div class="contents">
+      <div class="first-view">
+        <img src="/assets/hero.jpg" alt="トップ画面" class="top-image">
+      </div>
+      <div class="upper-content">
+        <!-- [新着の仕事情報]を表示する -->
+      </div>
+      <div class="middle-content">
+        <!-- [仕事情報]を表示する -->
+      </div>
+    </div>
+
+    <footer>
+    </footer>
+    </body>
+</html>    
