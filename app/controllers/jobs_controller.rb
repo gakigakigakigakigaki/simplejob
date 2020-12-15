@@ -17,10 +17,15 @@ class JobsController < ApplicationController
       end
   end
 
+  def show
+    @job = Job.find(params[:id])
+  end
+
   def destroy
   end
 
 
+private
   def job_params
     params.require(:job).permit(:title, :jikyu, :number_of_people, :prefecture_id, :working_hours, :contents, :period, :image).merge( company_id: current_company.id)
   end

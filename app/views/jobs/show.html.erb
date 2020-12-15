@@ -1,0 +1,50 @@
+
+<div class="job-show">
+  <div class="job-box">
+  <h2 class="name">
+    <%= @job.title %> 
+    <h2>
+  <div class='job-img-content'>
+    <%= image_tag @job.image, class: "job-img" %>
+  </div>
+
+  <div class="job-explain-box">
+    <span><%= "求人案内" %>
+  </div>
+  <table class="detail-table">
+    <tbody>
+      <tr>
+        <th class="detail-item">時給</th>
+        <td class="detail-value"><%= @job.jikyu %></td>
+      </tr>
+      <tr>
+        <th class="detail-item">勤務先</th>
+        <td class="detail-value"><%= @job.prefecture_id %></td>
+      </tr>
+      <tr>
+        <th class="detail-item">勤務時間</th>
+        <td class="detail-value"><%= @job.working_hours %></td>
+      </tr>
+      <tr>
+        <th class="detail-item">就業期間</th>
+        <td class="detail-value"><%= @job.period %></td>
+      </tr>
+      <tr>
+        <th class="detail-item">募集人数</th>
+        <td class="detail-value"><%= @job.number_of_people%></td>
+      </tr>
+      <tr>
+        <th class="detail-item">業務内容</th>
+        <td class="detail-value"><%= @job.contents%></td>
+       </tr> 
+    </tbody>
+    </table>
+
+    <% if company_signed_in? %>
+    <%= link_to '掲載の編集',"#", method: :get, class: "job-red-btn" %>
+    <p class='or-text'>or</p>
+    <%= link_to '削除',"#", method: :delete, class:'job-destroy' %>
+    <% end %>
+</div>
+
+      
