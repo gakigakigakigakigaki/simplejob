@@ -44,7 +44,7 @@
 | Column  | Type       | Options                        |
 | ------  | ---------- | ------------------------------ |
 | user    |references  | null: false, foreign_key: true |
-| job    |references  | null: false, foreign_key: true |
+| job     |references  | null: false, foreign_key: true |
 
 ### Association
 
