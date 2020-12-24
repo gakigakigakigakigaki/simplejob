@@ -1,0 +1,17 @@
+<div class="card">
+  <%=link_to image_tag(job.image.variant(resize: '150x150'), class: :card__img), job_path(job.id) %>
+  <div class="card__body">
+    <%= link_to job.title, '仕事名', class: :card__title %>
+    <p class="card__summary">
+      <%= "時給" %>
+      <%=  job.jikyu  %>円
+    </p>
+    <p class="card__summary">
+      <%= "仕事内容" %>
+      <%=  job.contents  %>
+    </p>
+
+  <%= link_to "by#{job.company}", "#", method: :get, class: :card__user %>
+
+  </div>
+</div>

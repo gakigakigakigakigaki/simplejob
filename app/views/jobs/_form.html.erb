@@ -1,0 +1,47 @@
+<div class="main">
+<%= form_with model: job, local: true do |f| %>
+<div class="field">
+  <%= f.label :title, "仕事の名称" %><br />
+  <%= f.text_area :title %>
+  </div>
+
+  <div class="field">
+  <%= f.label :contents, "仕事内容" %><br />
+  <%= f.text_area :contents, class: :form＿text %>
+  </div>
+
+  <div class="field">
+  <%= f.label :period, "期間" %><br />
+  <%= f.text_field :period %>
+  </div>
+
+  <div class="field">
+  <%= f.label :number_of_people, "募集人数" %><br />
+  <%= f.text_field :number_of_people %>
+  </div>
+
+  <div class="field">
+  <%= f.label :jikyu, "時給" %><br />
+  <%= f.text_field :jikyu %>
+  </div>
+
+  <div class="field">
+  <%= f.label :working_hours, "勤務時間" %><br />
+  <%= f.text_field :working_hours %>
+  </div>
+
+  <div class="field">
+  <%= f.label :prefecture_id, "住所" %><br />
+  <%= f.text_field :prefecture_id %>
+  </div>
+
+  <div class="field">
+  <%= f.label :image, "仕事の画像" %><br />
+  <%= f.file_field :image %>
+  </div>
+
+  <div class="action">
+    <%= f.submit "保存する", class: :form＿btn %>
+  </div>
+<% end %>
+</div>

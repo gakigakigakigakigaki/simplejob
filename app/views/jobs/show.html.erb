@@ -1,0 +1,81 @@
+<div class="main">
+<div class="job-show">
+  <div class="job-box">
+  <h2 class="name">
+    <%= @job.title %> 
+    <h2>
+  <div class='job-img-content'>
+    <%= image_tag @job.image, class: "job-img" %>
+  </div>
+
+  <div class="job-explain-box">
+    <span><%= "求人案内" %>
+  </div>
+  <table class="detail-table">
+    <tbody>
+      <tr>
+        <th class="detail-item">時給</th>
+        <td class="detail-value"><%= @job.jikyu %>円</td>
+      </tr>
+      <tr>
+        <th class="detail-item">勤務先</th>
+        <td class="detail-value"><%= @job.prefecture_id %></td>
+      </tr>
+      <tr>
+        <th class="detail-item">勤務時間</th>
+        <td class="detail-value"><%= @job.working_hours %></td>
+      </tr>
+      <tr>
+        <th class="detail-item">就業期間</th>
+        <td class="detail-value"><%= @job.period %></td>
+      </tr>
+      <tr>
+        <th class="detail-item">募集人数</th>
+        <td class="detail-value"><%= @job.number_of_people%>人</td>
+      </tr>
+      <tr>
+        <th class="detail-item">業務内容</th>
+        <td class="detail-value"><%= @job.contents%></td>
+       </tr> 
+    </tbody>
+    </table>
+
+    <% if company_signed_in? %>
+    <%= link_to '掲載の編集',edit_job_path, method: :get, class: "job-red-btn" %>
+    <p class='or-text'>or</p>
+    <%= link_to '削除',"#", method: :delete, class:'job-destroy' %>
+    
+    <% end %>
+    
+    <div class="container">
+    <% if company_signed_in? %>
+      <%= form_with(model: [@job, @message], local: true) do |form| %>
+        <%= form.text_area :text, placeholder: "コメントする", rows: "2" %>
+        <%= form.submit "SEND" %>
+        <% end %>
+      <% elsif user_signed_in? %>
+      <%= form_with(model: [@job, @message], local: true) do |form| %>
+        <%= form.text_area :text, placeholder: "コメントする", rows: "2" %>
+        <%= form.submit "SEND" %>
+        
+        <% end %>
+    <% else %>
+      <strong><p>※※※ コメントの投稿には新規登録/ログインが必要です ※※※</p>
+      </strong>
+    <% end %>
+    <div class="comments">
+      <h4>＜コメント一覧＞</h4>
+      <% if @messages %>
+        <% @messages.each do |message| %>
+          <p>
+          
+            <strong><%= link_to @message.user  %>：</strong>
+            <%= message.text %>
+          </p>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+    
+</div>
+</div>    

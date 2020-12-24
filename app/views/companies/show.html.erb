@@ -1,0 +1,48 @@
+<div class="main">
+  <div class="inner">
+    <div class="user__wrapper">
+      <h2 class="page-heading">
+        <h2 class="name">
+          <%= @company.company_name %> 
+
+          <div class="job-explain-box">
+            <span><%= "会社情報" %>
+            </div>
+            <table class="detail-table">
+            <tbody>
+            <tr>
+            <th class="detail-item">会社名</th>
+            <td class="detail-value"><%= @company.company_name %></td>
+            </tr>
+            <tr>
+            <th class="detail-item">担当者苗字</th>
+            <td class="detail-value"><%= @company.last_name %></td>
+            </tr>
+            <tr>
+            <th class="detail-item">担当者名前</th>
+            <td class="detail-value"><%= @company.first_name %></td>
+            </tr>
+            <tr>
+            <th class="detail-item">郵便番号</th>
+            <td class="detail-value"><%= @company.postal_code %></td>
+            </tr>
+            <tr>
+            <th class="detail-item">住所</th>
+            <td class="detail-value"><%= @company.prefecture_id%></td>
+            </tr>
+            <tr>
+            <th class="detail-item">住所</th>
+            <td class="detail-value"><%= @company.city%></td>
+            </tr>
+            <tr>
+            <th class="detail-item">電話番号</th>
+            <td class="detail-value"><%= @company.phone_number%>
+            </tr> 
+            </tbody>
+            </table>
+          </div>
+        </h2>
+      </h2>
+    </div>
+  </div>
+</div>
