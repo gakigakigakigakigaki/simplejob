@@ -1,4 +1,4 @@
-
+<div class="main">
 <div class="job-show">
   <div class="job-box">
   <h2 class="name">
@@ -15,7 +15,7 @@
     <tbody>
       <tr>
         <th class="detail-item">時給</th>
-        <td class="detail-value"><%= @job.jikyu %></td>
+        <td class="detail-value"><%= @job.jikyu %>円</td>
       </tr>
       <tr>
         <th class="detail-item">勤務先</th>
@@ -31,7 +31,7 @@
       </tr>
       <tr>
         <th class="detail-item">募集人数</th>
-        <td class="detail-value"><%= @job.number_of_people%></td>
+        <td class="detail-value"><%= @job.number_of_people%>人</td>
       </tr>
       <tr>
         <th class="detail-item">業務内容</th>
@@ -41,10 +41,41 @@
     </table>
 
     <% if company_signed_in? %>
-    <%= link_to '掲載の編集',"#", method: :get, class: "job-red-btn" %>
+    <%= link_to '掲載の編集',edit_job_path, method: :get, class: "job-red-btn" %>
     <p class='or-text'>or</p>
     <%= link_to '削除',"#", method: :delete, class:'job-destroy' %>
+    
     <% end %>
+    
+    <div class="container">
+    <% if company_signed_in? %>
+      <%= form_with(model: [@job, @message], local: true) do |form| %>
+        <%= form.text_area :text, placeholder: "コメントする", rows: "2" %>
+        <%= form.submit "SEND" %>
+        <% end %>
+      <% elsif user_signed_in? %>
+      <%= form_with(model: [@job, @message], local: true) do |form| %>
+        <%= form.text_area :text, placeholder: "コメントする", rows: "2" %>
+        <%= form.submit "SEND" %>
+        
+        <% end %>
+    <% else %>
+      <strong><p>※※※ コメントの投稿には新規登録/ログインが必要です ※※※</p>
+      </strong>
+    <% end %>
+    <div class="comments">
+      <h4>＜コメント一覧＞</h4>
+      <% if @messages %>
+        <% @messages.each do |message| %>
+          <p>
+          
+            <strong><%= link_to @message.user  %>：</strong>
+            <%= message.text %>
+          </p>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+    
 </div>
-
-      
+</div>    

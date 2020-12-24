@@ -1,5 +1,8 @@
 class Job < ApplicationRecord
   belongs_to :company
+  has_many :messages
+  belongs_to :user
+  
   has_one :application_record
   has_one_attached :image
 
@@ -11,6 +14,5 @@ class Job < ApplicationRecord
     validates :contents
     validates :prefecture_id
     validates :working_hours
-    validates :image
   end
 end

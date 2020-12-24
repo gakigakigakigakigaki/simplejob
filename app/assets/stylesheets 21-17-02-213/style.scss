@@ -3,7 +3,7 @@
 body {
   font-size: 14px;
   color: #333;
-  margin: 0 auto;
+  margin: 0 
 }
 h1,h2,h3,h4,h5,h6,p {
   padding: 10px 0;
@@ -15,6 +15,12 @@ ul,li {
   margin: 0;
 }
 
+
+.inner {
+  width: 1024px;
+  margin: 0 auto;
+}
+
 /* / ヘッダー　/ */
 header {
   height: 100px;
@@ -24,7 +30,7 @@ header {
 }
 
 .heading {
-  width: 50%;
+  width: 100%;
   margin-left: 30px;
 }
 
@@ -43,22 +49,40 @@ li {
 }
 
 .contents {
-  background-color: white;
+  width: 70vw;
+  background-image: image-url('hero.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position:top center;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 5vh 15vw;
+  color: #fff;
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.9);
 }
 
-.first-view{
-  height: 60vh;
+.service-title {
+  font-size: 8vh;
 }
+  
+.service-explain {
+  font-size: 2.5vh;
+  line-height: 40px;
+}
+
 
 /* 新着仕事情報 */
 .upper-content{
-  height: 450px;
-  margin: 0 160px;
+  height: 100px;
+  
+  
 }
 
 .middle-content{
-  height: 100px;
-  margin: 50 50px;
+
+  height: 100%;
   padding: 20px;
   display: flex;
   justify-content: center;
@@ -118,7 +142,7 @@ footer {
 }
 
 .job-box {
-  background-color: #FFF;
+  background-color:whitesmoke;
   width: 70vw;
   min-width: 1200px;
   padding: 10vh 15vw;
@@ -247,3 +271,75 @@ footer {
 }
 
 
+/* ユーザーページ */
+
+.user__wrapper{
+  min-height: calc(100vh - 161px);
+}
+
+.table{
+  border-collapse: collapse;
+  margin-bottom: 32px;
+  width: 50%;
+}
+.table__col1{
+  text-align: left;
+  font-weight: bold;
+  background: #fafafa;
+  border-collapse: collapse;
+  border: 1px solid #f5f5f5;
+  width: 30%;
+  padding: 8px;
+}
+.table__col2{
+  text-align: left;
+  border: 1px solid #f5f5f5;
+  border-collapse: collapse;
+  width: 70%;
+  padding: 16px 8px;
+}
+
+.swiper-container{
+  width: 1450px;
+  height: 500px;
+  background-color: lightyellow;
+}
+
+.swiper-wrapper {
+	width: 100%;
+	height: 250px;
+}
+/* 全スライド共通スタイル */
+.swiper-slide {
+	width: 100%;
+	height: 100%;
+	display: flex;
+ justify-content: space-around;
+}
+
+input[type="text"] {
+  width: 500px;
+  height: 40px;
+}
+
+
+.prototype__comments{
+  background-color: #f6f6f6;
+  padding: 20px;
+  margin: 28px 0 40px 0;
+}
+
+.comments_lists{
+  padding-left: 20px;
+}
+
+.comments_list{
+  list-style-type: square;
+  padding-bottom: 5px;
+}
+
+.comment_user{
+  font-size: 16px;
+  color: #999;
+  text-decoration: underline;
+}

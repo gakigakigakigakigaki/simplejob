@@ -4,7 +4,7 @@
     <title>Simple Job</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+   
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
@@ -17,12 +17,12 @@
         <div class="navbar">
           <ul class="nav-lists">
           <% if user_signed_in? %>
-            <li><%= link_to current_user.nickname, "#", class: "user-nickname" %></li>
+            <li><%= link_to current_user.nickname, user_path(current_user), class: "user-nickname" %></li>
             <li><%= link_to 'ログアウト',destroy_user_session_path, method: :delete, class:"logout" %></li>
             
 
             <% elsif company_signed_in? %>
-              <li><%= link_to current_company.company_name, "#", class: "company-company_name"%></li>
+              <li><%= link_to current_company.company_name, company_path(current_company), class: "company-company_name"%></li>
               <li><%= link_to '掲載',new_job_path, method: :get, class: "published" %></li>
               <li><%= link_to 'ログアウト',destroy_company_session_path, method: :delete, class:"logout" %></li>
 

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root to: "jobs#index"
   devise_for :companies, controllers: {
     sessions:      'companies/sessions',
     passwords:     'companies/passwords',
@@ -9,10 +10,17 @@ Rails.application.routes.draw do
     passwords:     'users/passwords',
     registrations: 'users/registrations'
   }
-  root to: "jobs#index"
-  resources :jobs 
+
+  
+  resources :jobs do
+    resources :messages 
+  end
   
   
+  resources :users
+
   
-  
+      
+
+  resources :companies 
 end

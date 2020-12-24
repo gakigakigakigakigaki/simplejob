@@ -1,34 +1,81 @@
 <!DOCTYPE HTML>
 <html>
+<div class="main">
   <head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/5.3.7/css/swiper.min.css">
+    
     <meta charset="UTF-8">
     <link rel="stylesheet" href="style.css">
     <title>Simple Job</title>
     </head>
     <body>
       
-
-    <div class="contents">
-      <div class="first-view">
-        <img src="/assets/hero.jpg" alt="トップ画面" class="top-image">
-      </div>
-      <div class="upper-content">
-        <!-- [新着の仕事情報]を表示する -->
-      </div>
-
+  
+    <div class='contents'>
+      <h2 class='service-title'>
+        スキマ時間を有効活用
+      </h2>
+    
+      <p class='service-explain'>
+        誰でも簡単に出来る仕事をマッチングする
+      </p>
+      <p class='service-explain'>
+        マッチングアプリです
+      </p>
+    </div>
       <div class="middle-content">
 
       <h3>仕事情報</h3>
       </div>
       <div class="card__wrapper">
       
-        <!-- [仕事情報]を表示する -->
-        <%= render partial: 'job', collection: @job %>
+      </div>
+      <div class="swiper-container">
+	        
+	    <div class="swiper-wrapper">
+	      	 
+		    <div class="swiper-slide"><%= render partial: 'job', collection: @job = Job.first(4) %></div>
+        <div data-swiper-parallax="-300">Slide 1</div>
+		    <div class="swiper-slide"><%= render partial: 'job', collection: @job = Job.last(4) %></div>
+        <div data-swiper-parallax="-300">Slide 2</div>
+		    <div class="swiper-slide">Slide 3</div>
+        <div data-swiper-parallax="-300">Slide 3</div>
+		    <div class="swiper-slide">Slide 4</div>
+        <div data-swiper-parallax="-300">Slide 4</div>
+
+        <div class="swiper-button-prev"></div>
+	      <div class="swiper-button-next"></div>
+        
+	   </div>
+     </div>
       </div>
       
-    </div>
-
+      
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/5.3.7/js/swiper.min.js"></script>
+  <script>
+    var mySwiper = new Swiper('.swiper-container', {
+  arallax: true,
+  speed: 3000,
+  autoplay: {
+    delay: 4000,
+		stopOnLastSlide: false,
+		disableOnInteraction: false,
+		reverseDirection: false
+	},
+	navigation: {
+		nextEl: '.swiper-button-next',
+		prevEl: '.swiper-button-prev'
+	},
+	pagination: {
+		el: '.swiper-pagination',
+		type: 'bullets',
+		clickable: true
+	}
+});
+</script>
     <footer>
     </footer>
     </body>
+</div>
 </html>    

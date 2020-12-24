@@ -24,7 +24,7 @@
   </div>
 
   <div class="field">
-    <%= f.label company_name, '企業名' %><br />
+    <%= f.label :company_name, '企業名' %><br />
     <%= f.text_field :company_name %>
   </div>
 
@@ -46,23 +46,20 @@
 
   <div class="field">
   <%= f.label :phone_number, '電話番号'%><br />
-  <%= f,text_field :phone_number %>
+  <%= f.text_field :phone_number %>
 
   <div class="field">
     <%= f.label :postal_code, '郵便番号'%><br />
-    <%= f.text_field :postal_number %>
+    <%= f.text_field :postal_code %>
 
   <div class="field">
     <%= f.label :prefecture_id, '都道府県'%><br />
-    <%= f.collection_select(:prefecture_id, prefecture.all, :id, :name, {}, {class:"select-box", id:"company"}) %>
+    <%= f.text_field :prefecture_id%>
 
   <div class="field">
     <%= f.label :city, '市区町村'%><br />
     <%= f.text_field :city %>
 
-  <div class="field">
-    <%= f.label :house_number, '番地'%><br />
-    <%= f.text_fild :house_number %>
 
     <div class="actions">
     <%= f.submit "新規登録" %>
