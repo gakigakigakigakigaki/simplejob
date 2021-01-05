@@ -1,9 +1,9 @@
 class Job < ApplicationRecord
   belongs_to :company
   has_many :messages
-  belongs_to :user
+  has_one :prefecture
   
-  has_one :application_record
+  has_many :relationships
   has_one_attached :image
 
   with_options presence: true do
@@ -15,4 +15,6 @@ class Job < ApplicationRecord
     validates :prefecture_id
     validates :working_hours
   end
+  extend ActiveHash::Associations::ActiveRecordExtensions
+  belongs_to :prefecture
 end

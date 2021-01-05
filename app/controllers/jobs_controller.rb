@@ -21,9 +21,8 @@ class JobsController < ApplicationController
   end
 
   def show
-    
     @job = Job.find(params[:id])
-  
+    @messages = Message.all
     @message = Message.new
     @messages = @job.messages.includes(:user)
     
@@ -58,7 +57,7 @@ class JobsController < ApplicationController
 
 private
   def job_params
-    params.require(:job).permit(:title, :jikyu, :number_of_people, :prefecture_id, :working_hours, :contents, :period, :image).merge( user_id: current_user.id)
+    params.require(:job).permit(:title, :jikyu, :number_of_people, :prefecture_id, :working_hours, :contents, :period, :image).merge(company_id: current_company.id)
   end
 
   

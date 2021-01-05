@@ -14,13 +14,12 @@ Rails.application.routes.draw do
   
   resources :jobs do
     resources :messages 
-  end
+      
   
+  end
+  resources :relationships, only: [:create, :destroy]
   
   resources :users
-
   
-      
-
   resources :companies 
 end

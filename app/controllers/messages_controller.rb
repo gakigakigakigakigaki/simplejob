@@ -1,9 +1,16 @@
 class MessagesController < ApplicationController
+  def new
+    @messages = Message.all
+    @message = Message.new
+  end
+  
+  
   def create
     @job = Job.find(params[:job_id])
-    @message = Message.new(message_params)
+    @message = Message.new(text: params[:message][:text])
     if @message.save
-      redirect_to job_path(@messages.job)
+      ActionCable.server.broadcast 'message_channel', content: @message
+      # redirect_to job_path(@message.job)
     else
       @job = @message.job
       @messages = @job.messages
@@ -20,7 +27,11 @@ class MessagesController < ApplicationController
 
   private
   def message_params
-    params.require(:message).permit(:text, :user, :company, :job).merge(user_id: current_user.id, company_id: current_company.id)
+    if current_company
+      params.require(:message).permit(:text, :user, :company, :job).merge(job_id: params[:job_id],company_id: current_company.id)
+    else current_user
+      params.require(:message).permit(:text, :user, :company, :job).merge(job_id: params[:job_id],user_id: current_user.id)
+    end
   end
 
   

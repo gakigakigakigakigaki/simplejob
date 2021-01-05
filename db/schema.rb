@@ -88,8 +88,15 @@ ActiveRecord::Schema.define(version: 2020_12_19_051541) do
   end
 
   create_table "relationships", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "company_id"
+    t.bigint "follow_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["company_id"], name: "index_relationships_on_company_id"
+    t.index ["follow_id"], name: "index_relationships_on_follow_id"
+    t.index ["user_id", "company_id", "follow_id"], name: "index_relationships_on_user_id_and_company_id_and_follow_id", unique: true
+    t.index ["user_id"], name: "index_relationships_on_user_id"
   end
 
   create_table "rooms", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -123,4 +130,7 @@ ActiveRecord::Schema.define(version: 2020_12_19_051541) do
   add_foreign_key "messages", "companies"
   add_foreign_key "messages", "jobs"
   add_foreign_key "messages", "users"
+  add_foreign_key "relationships", "companies"
+  add_foreign_key "relationships", "companies", column: "follow_id"
+  add_foreign_key "relationships", "users"
 end

@@ -22,15 +22,19 @@
       <p class='service-explain'>
         マッチングアプリです
       </p>
+      <div class='store-btn'>
+      <%= link_to image_tag("https://linkmaker.itunes.apple.com/ja-jp/badge-lrg.svg?releaseDate=2011-09-21&kind=iossoftware&bubble=ios_apps", class:"apple-btn"), "#" %>
+      <%= link_to image_tag("dl-android.png", class:"google-btn"), "#" %>
+    </div>
     </div>
       <div class="middle-content">
 
       <h3>仕事情報</h3>
-      </div>
-      <div class="card__wrapper">
+       </div> 
+      <%# <div class="card__wrapper"> %>
       
-      </div>
-      <div class="swiper-container">
+      <%# </div> %>
+      <div class="swiper-container"> 
 	        
 	    <div class="swiper-wrapper">
 	      	 
@@ -38,10 +42,10 @@
         <div data-swiper-parallax="-300">Slide 1</div>
 		    <div class="swiper-slide"><%= render partial: 'job', collection: @job = Job.last(4) %></div>
         <div data-swiper-parallax="-300">Slide 2</div>
-		    <div class="swiper-slide">Slide 3</div>
-        <div data-swiper-parallax="-300">Slide 3</div>
-		    <div class="swiper-slide">Slide 4</div>
-        <div data-swiper-parallax="-300">Slide 4</div>
+		    <%# <div class="swiper-slide">Slide 3</div> %>
+        <%# <div data-swiper-parallax="-300">Slide 3</div> %>
+		    <%# <div class="swiper-slide">Slide 4</div> %>
+        <%# <div data-swiper-parallax="-300">Slide 4</div> %>
 
         <div class="swiper-button-prev"></div>
 	      <div class="swiper-button-next"></div>

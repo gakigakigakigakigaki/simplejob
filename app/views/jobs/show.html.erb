@@ -19,7 +19,7 @@
       </tr>
       <tr>
         <th class="detail-item">勤務先</th>
-        <td class="detail-value"><%= @job.prefecture_id %></td>
+        <td class="detail-value"><%= @job.prefecture.name %></td>
       </tr>
       <tr>
         <th class="detail-item">勤務時間</th>
@@ -47,6 +47,7 @@
     
     <% end %>
     
+<%# <%= render partial:'relationships/follow_button', user: @user %>  %>
     <div class="container">
     <% if company_signed_in? %>
       <%= form_with(model: [@job, @message], local: true) do |form| %>
@@ -69,13 +70,13 @@
         <% @messages.each do |message| %>
           <p>
           
-            <strong><%= link_to @message.user  %>：</strong>
+            <strong><%= link_to message.user, user_path %>：</strong>
             <%= message.text %>
           </p>
         <% end %>
       <% end %>
     </div>
   </div>
-    
+     
 </div>
 </div>    
