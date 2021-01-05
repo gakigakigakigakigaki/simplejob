@@ -58,3 +58,7 @@ gem 'image_processing', '~> 1.2'
 gem 'jquery-rails'
 gem 'pry-rails'
 gem 'active_hash'
+
+group :production do
+  gem 'unicorn', '5.4.1'
+end
