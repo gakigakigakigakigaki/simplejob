@@ -22,9 +22,9 @@ class RelationshipsController < ApplicationController
     end
 end
 
-private
-def
-  # @user = User.find(params[:relationship][:follw_id])
-end
-end
+# private
+# def
+#   # @user = User.find(params[:relationship][:follw_id])
+# end
+# end
   
