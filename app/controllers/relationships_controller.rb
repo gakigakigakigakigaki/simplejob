@@ -24,7 +24,7 @@ end
 
 private
 def
-  @user = User.find(params[:relationship][:follw_id])
+  # @user = User.find(params[:relationship][:follw_id])
 end
 end
   
