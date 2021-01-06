@@ -22,7 +22,7 @@
             
 
             <% elsif company_signed_in? %>
-              <li><%= link_to current_company.company_name, company_path(current_company), class: "company-company_name"%></li>
+               <li><%= link_to current_company.company_name, company_path(current_company), class: "company-company_name"%></li> 
               <li><%= link_to '掲載',new_job_path, method: :get, class: "published" %></li>
               <li><%= link_to 'ログアウト',destroy_company_session_path, method: :delete, class:"logout" %></li>
 

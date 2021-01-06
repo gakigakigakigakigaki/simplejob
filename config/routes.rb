@@ -17,8 +17,6 @@ Rails.application.routes.draw do
       
   
   end
-  resources :relationships, only: [:create, :destroy]
-  
   resources :users
   
   resources :companies 
