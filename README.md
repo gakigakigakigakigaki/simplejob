@@ -47,7 +47,7 @@ Ruby / Ruby on Rails / MySQL / GitHub / Heroku / Visual Studio Code
 
 >
 >
-.URL= http://13.114.252.158:3000/
+.URL= 13.114.252.158:3000/
 
 
 
