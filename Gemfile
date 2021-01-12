@@ -64,6 +64,7 @@ gem 'jquery-rails'
 gem 'pry-rails'
 gem 'active_hash'
 gem "aws-sdk-s3", require: false
+gem 'font-awesome-sass', '~> 5.15.1'
 
 group :production do
   gem 'unicorn', '5.4.1'

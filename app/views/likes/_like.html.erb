@@ -1,0 +1,11 @@
+<% if job.liked_by?(current_user) %>
+   <%= link_to(job_add_path(job), method: :delete, remote: true, id: :"like-button-#{job.id}") do %>
+      <span class="fa fa-heart icon-size like-btn-unlike"></span>
+      <%= Like.where(job_id: job).count %>
+   <% end %>
+<% else %>
+   <%= link_to(job_add_path(job), method: :post, remote: true, id: :"like-button-#{job.id}") do %>
+        <span class="fa fa-heart icon-size like-btn"></span>
+         <%= Like.where(job_id: job).count %>
+   <% end %>
+<% end %>

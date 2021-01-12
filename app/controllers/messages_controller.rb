@@ -7,7 +7,7 @@ class MessagesController < ApplicationController
   
   def create
     @job = Job.find(params[:job_id])
-    @message = Message.new(text: params[:message][:text])
+    @message = Message.new(message_params)
     if @message.save
       ActionCable.server.broadcast 'message_channel', content: @message
       # redirect_to job_path(@message.job)
@@ -22,15 +22,17 @@ class MessagesController < ApplicationController
     def show
       @job = Job.find(params[:job_id])
       @user = User.find(params[:id])
+      @company = Company.find(params[:id])
       @messages = Message.all
   end
 
   private
   def message_params
-    if current_company
-      params.require(:message).permit(:text, :user, :company, :job).merge(job_id: params[:job_id],company_id: current_company.id)
-    else current_user
-      params.require(:message).permit(:text, :user, :company, :job).merge(job_id: params[:job_id],user_id: current_user.id)
+    if user_signed_in?
+      params.require(:message).permit(:text, :user, :company).merge(user_id: current_user.id, job_id: params[:job_id])
+    else company_signed_in?
+      params.require(:message).permit(:text, :user, :company).merge(company_id: current_company.id, job_id: params[:job_id])
+
     end
   end
 

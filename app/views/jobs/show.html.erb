@@ -47,7 +47,7 @@
     
     <% end %>
     
-<%# <%= render partial:'relationships/follow_button', user: @user %>  %>
+<%# <%= render partial:'relationships/follow_button', user: @user %>  
     <div class="container">
     <% if company_signed_in? %>
       <%= form_with(model: [@job, @message], local: true) do |form| %>
@@ -55,8 +55,8 @@
         <%= form.submit "SEND" %>
         <% end %>
       <% elsif user_signed_in? %>
-      <%= form_with(model: [@job, @message], local: true) do |form| %>
-        <%= form.text_area :text, placeholder: "コメントする", rows: "2" %>
+       <%= form_with(model: [@job, @message], local: true) do |form| %>
+       <%= form.text_area :text, placeholder: "コメントする", rows: "2" %>
         <%= form.submit "SEND" %>
         
         <% end %>
@@ -66,17 +66,28 @@
     <% end %>
     <div class="comments">
       <h4>＜コメント一覧＞</h4>
-      <% if @messages %>
+      <% if @messages %> 
         <% @messages.each do |message| %>
           <p>
-          
-            <strong><%= link_to message.user, user_path %>：</strong>
-            <%= message.text %>
+            
+              <strong><%= link_to "by#{message.user.nickname}",user_path(message.user.id) %>：</strong>
+            
+              
+            
+            <%= message.text %> 
           </p>
         <% end %>
+      <% end %> 
+      <% if user_signed_in? %>
+     <div id="like-btn-<%= @job.id %>">
+       <%= render 'likes/like', job: @job %>
+    </div>
+      <% else company_signed_in? %>
+      <span class="fa fa-heart icon-size like-btn"></span>
+      <%= Like.where(job_id: @job).count %>
       <% end %>
     </div>
   </div>
-     
+  
 </div>
 </div>    

@@ -13,11 +13,10 @@ Rails.application.routes.draw do
 
   
   resources :jobs do
-    resources :messages 
-      
-  
+    post 'add' => 'likes#create'
+  delete '/add' => 'likes#destroy' 
+  resources :messages
   end
   resources :users
-  
   resources :companies 
 end
