@@ -17,6 +17,11 @@ Rails.application.routes.draw do
   delete '/add' => 'likes#destroy' 
   resources :messages
   end
-  resources :users
+  
+  resources :users do
+    resources :memos
+  end
+
   resources :companies 
+  resources :memos
 end

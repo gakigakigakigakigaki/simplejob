@@ -1,0 +1,50 @@
+<div class="container-fluid">
+	<h2 class="section-top"><span class="fas fa-dumbbell" aria-hidden="true"></span> シフト管理表
+  </h2>
+	<div class="col-md-3 col-sm-12 col-xs-12">
+   <%= form_for (@memo) do |f| %>
+     <div class="field row">
+       <label for='title'>用件</label>
+       <p><%= f.text_area :title%></p>
+       <label for="start_time">勤務開始可能時間</label>
+       <p><%= f.datetime_select :start_time%></p>
+       <label for="end_time">勤務終了希望時間</label>
+       <p><%= f.datetime_select :end_time%></p>
+     </div>
+     <div class="actions row">
+       <%= f.submit class: "btn btn-sm btn-hachiss" %>
+     </div>
+   <% end %>
+     </div>
+ 	   <div class="col-md-9 col-sm-12 col-xs-12">
+		   <%= month_calendar events: @user.memos do |date, memos| %>
+		   <%= date.day %>
+		   <% memos.each do |memo| %>
+		    <div>
+		      <%= link_to memo.title, edit_memo_path(memo) %>
+		    </div>
+		    <% end %>
+		    <% end %>
+	     <table class="memo table table-bordered">
+         <thead>
+            <tr>
+                <th>用件</th>
+                <th>勤務開始可能時間</th>
+                <th>勤務終了希望時間</th>
+            </tr>
+         </thead>
+           <% @memos.each do |user| %>
+             <tbody>
+                 <tr>
+                     <td><%= user.title%></td>
+                     <td><%= user.start_time.strftime("%Y-%m-%d %H:%M")%></td>
+                     <td><%= user.end_time.strftime("%Y-%m-%d %H:%M")%></td>
+                     <td><%=link_to "編集" , edit_memo_path(user),:class=>"btn04"  %></td>
+						<td><%=link_to "削除",memo_path(user) , method: :delete , data: {confirm:"削除しますか"} ,:class=>"btn03"%></td>
+					</tr>
+				</tbody>
+			<% end %>
+  		</table>
+  		<%# <%= paginate @memos %> %>
+ 	</div>
+</div>

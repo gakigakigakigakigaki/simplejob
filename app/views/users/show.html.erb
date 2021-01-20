@@ -4,6 +4,9 @@
       <h2 class="page-heading">
         <%= @user.nickname + "さんの情報" %>
       </h2>
+      <% if user_signed_in? %>
+      <%= link_to 'シフト入力', memos_path, method: :get%>
+      <% end %>
       <table class="table">
         <tbody>
         <tr>
@@ -28,6 +31,25 @@
         </tr>
         </tbody>
       </table>
+      <table class="memo table table-bordered">
+         <thead>
+            <tr>
+                <th>用件</th>
+                <th>勤務開始可能時間</th>
+                <th>勤務終了希望時間</th>
+            </tr>
+         </thead>
+           <% @memos.each do |user| %>
+             <tbody>
+                 <tr>
+                     <td><%= user.title%></td>
+                     <td><%= user.start_time.strftime("%Y-%m-%d %H:%M")%></td>
+                     <td><%= user.end_time.strftime("%Y-%m-%d %H:%M")%></td>
+                     
+					</tr>
+				</tbody>
+			<% end %>
+  		</table>
     </div>
   </div>
 </div>

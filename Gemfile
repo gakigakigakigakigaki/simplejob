@@ -65,6 +65,7 @@ gem 'pry-rails'
 gem 'active_hash'
 gem "aws-sdk-s3", require: false
 gem 'font-awesome-sass', '~> 5.15.1'
+gem 'simple_calendar', '~> 2.0' 
 
 group :production do
   gem 'unicorn', '5.4.1'

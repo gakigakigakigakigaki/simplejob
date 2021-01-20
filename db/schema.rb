@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_09_014142) do
+ActiveRecord::Schema.define(version: 2021_01_20_000905) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -84,6 +84,16 @@ ActiveRecord::Schema.define(version: 2021_01_09_014142) do
     t.index ["user_id"], name: "index_likes_on_user_id"
   end
 
+  create_table "memos", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "user_id"
+    t.string "title"
+    t.datetime "start_time"
+    t.datetime "end_time"
+    t.index ["user_id"], name: "index_memos_on_user_id"
+  end
+
   create_table "messages", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.text "text", null: false
     t.bigint "job_id"
@@ -138,6 +148,7 @@ ActiveRecord::Schema.define(version: 2021_01_09_014142) do
   add_foreign_key "jobs", "users"
   add_foreign_key "likes", "jobs"
   add_foreign_key "likes", "users"
+  add_foreign_key "memos", "users"
   add_foreign_key "messages", "companies"
   add_foreign_key "messages", "jobs"
   add_foreign_key "messages", "users"

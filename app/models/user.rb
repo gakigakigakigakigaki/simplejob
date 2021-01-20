@@ -6,6 +6,7 @@ class User < ApplicationRecord
   
   has_many :jobs
   has_many :mesaages
+  has_many :memos
   has_many :likes, dependent: :destroy
   has_many :like_jobs, through: :likes, source: :job
   has_many :relationships
